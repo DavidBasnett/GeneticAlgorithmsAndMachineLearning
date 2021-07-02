@@ -20,7 +20,7 @@ namespace UserInterface
         {
             InitializeComponent();
         }
-
+        #region Escape
         private void buttonDrawLine_Click(object sender, EventArgs e)
         {
             ResetDisplay();
@@ -39,7 +39,7 @@ namespace UserInterface
             _escape.DrawTriangles((int)numericUpDownEscape.Value);
         }
 
-       private void buttonSpirangles_Click(object sender, EventArgs e)
+        private void buttonSpirangles_Click(object sender, EventArgs e)
         {
             ResetDisplay();
             _escape.DrawRandomSpirangles();
@@ -57,6 +57,44 @@ namespace UserInterface
             pictureBoxEscape.Image = null;
             Turtle.Init(pictureBoxEscape);
             new LSystem().Dragon();
+        }
+        #endregion
+
+        private void buttonDecision1_Click(object sender, EventArgs e)
+        {
+            var data = new List<PositionData> {
+                new PositionData(0, 0, false),
+                new PositionData(1, 0, false),
+                new PositionData(0, 1, true),
+                new PositionData(1, 1, true) };
+
+            CreateTreeAndShowRules(data);
+        }
+
+        private void CreateTreeAndShowRules(List<PositionData> data)
+        {
+            var labels = new List<string> { "X", "Y", "Out" };
+            var decisionTree = new DecisionTree<bool>();
+            var classifier = decisionTree.CreateTree(data, labels);
+            textBoxDecision.Text = decisionTree.AsRules(classifier, labels);
+        }
+
+        private void buttonDecision2_Click(object sender, EventArgs e)
+        {
+            var data = new List<PositionData> {
+                new PositionData(0, 0, false),
+                new PositionData(-1, 0, true),
+                new PositionData(1, 0, true),
+                new PositionData(0, -1, true),
+                new PositionData(0, 1, true) };
+
+            CreateTreeAndShowRules(data);
+        }
+
+        private void buttonDecisionEscape_Click(object sender, EventArgs e)
+        {
+            var data = _escape.DrawRandomSpirangles();
+            CreateTreeAndShowRules(data);
         }
     }
 }

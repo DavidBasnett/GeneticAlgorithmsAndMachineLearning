@@ -34,22 +34,27 @@ namespace UserInterface
             this.buttonDrawSquares = new System.Windows.Forms.Button();
             this.pictureBoxEscape = new System.Windows.Forms.PictureBox();
             this.buttonDrawLine = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageDecisionTree = new System.Windows.Forms.TabPage();
             this.numericUpDownEscape = new System.Windows.Forms.NumericUpDown();
             this.buttonDrawTriangles = new System.Windows.Forms.Button();
             this.buttonSpirangles = new System.Windows.Forms.Button();
             this.labelEscapeNumber = new System.Windows.Forms.Label();
             this.buttonDrawDragon = new System.Windows.Forms.Button();
+            this.buttonDecision1 = new System.Windows.Forms.Button();
+            this.textBoxDecision = new System.Windows.Forms.TextBox();
+            this.buttonDecision2 = new System.Windows.Forms.Button();
+            this.buttonDecisionEscape = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageEscape.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEscape)).BeginInit();
+            this.tabPageDecisionTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEscape)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageEscape);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageDecisionTree);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -106,15 +111,19 @@ namespace UserInterface
             this.buttonDrawLine.UseVisualStyleBackColor = true;
             this.buttonDrawLine.Click += new System.EventHandler(this.buttonDrawLine_Click);
             // 
-            // tabPage2
+            // tabPageDecisionTree
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 424);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageDecisionTree.Controls.Add(this.buttonDecisionEscape);
+            this.tabPageDecisionTree.Controls.Add(this.buttonDecision2);
+            this.tabPageDecisionTree.Controls.Add(this.textBoxDecision);
+            this.tabPageDecisionTree.Controls.Add(this.buttonDecision1);
+            this.tabPageDecisionTree.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDecisionTree.Name = "tabPageDecisionTree";
+            this.tabPageDecisionTree.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDecisionTree.Size = new System.Drawing.Size(792, 424);
+            this.tabPageDecisionTree.TabIndex = 1;
+            this.tabPageDecisionTree.Text = "Decision Tree";
+            this.tabPageDecisionTree.UseVisualStyleBackColor = true;
             // 
             // numericUpDownEscape
             // 
@@ -173,6 +182,48 @@ namespace UserInterface
             this.buttonDrawDragon.UseVisualStyleBackColor = true;
             this.buttonDrawDragon.Click += new System.EventHandler(this.buttonDrawDragon_Click);
             // 
+            // buttonDecision1
+            // 
+            this.buttonDecision1.Location = new System.Drawing.Point(8, 6);
+            this.buttonDecision1.Name = "buttonDecision1";
+            this.buttonDecision1.Size = new System.Drawing.Size(89, 23);
+            this.buttonDecision1.TabIndex = 0;
+            this.buttonDecision1.Text = "Example 1";
+            this.buttonDecision1.UseVisualStyleBackColor = true;
+            this.buttonDecision1.Click += new System.EventHandler(this.buttonDecision1_Click);
+            // 
+            // textBoxDecision
+            // 
+            this.textBoxDecision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDecision.Location = new System.Drawing.Point(103, 3);
+            this.textBoxDecision.Multiline = true;
+            this.textBoxDecision.Name = "textBoxDecision";
+            this.textBoxDecision.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDecision.Size = new System.Drawing.Size(681, 413);
+            this.textBoxDecision.TabIndex = 1;
+            // 
+            // buttonDecision2
+            // 
+            this.buttonDecision2.Location = new System.Drawing.Point(8, 35);
+            this.buttonDecision2.Name = "buttonDecision2";
+            this.buttonDecision2.Size = new System.Drawing.Size(89, 23);
+            this.buttonDecision2.TabIndex = 2;
+            this.buttonDecision2.Text = "Example 2";
+            this.buttonDecision2.UseVisualStyleBackColor = true;
+            this.buttonDecision2.Click += new System.EventHandler(this.buttonDecision2_Click);
+            // 
+            // buttonDecisionEscape
+            // 
+            this.buttonDecisionEscape.Location = new System.Drawing.Point(8, 64);
+            this.buttonDecisionEscape.Name = "buttonDecisionEscape";
+            this.buttonDecisionEscape.Size = new System.Drawing.Size(89, 23);
+            this.buttonDecisionEscape.TabIndex = 3;
+            this.buttonDecisionEscape.Text = "From Escape";
+            this.buttonDecisionEscape.UseVisualStyleBackColor = true;
+            this.buttonDecisionEscape.Click += new System.EventHandler(this.buttonDecisionEscape_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +236,8 @@ namespace UserInterface
             this.tabPageEscape.ResumeLayout(false);
             this.tabPageEscape.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEscape)).EndInit();
+            this.tabPageDecisionTree.ResumeLayout(false);
+            this.tabPageDecisionTree.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEscape)).EndInit();
             this.ResumeLayout(false);
 
@@ -194,7 +247,7 @@ namespace UserInterface
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageEscape;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageDecisionTree;
         private System.Windows.Forms.PictureBox pictureBoxEscape;
         private System.Windows.Forms.Button buttonDrawLine;
         private System.Windows.Forms.Button buttonDrawSquares;
@@ -203,6 +256,10 @@ namespace UserInterface
         private System.Windows.Forms.Label labelEscapeNumber;
         private System.Windows.Forms.Button buttonSpirangles;
         private System.Windows.Forms.Button buttonDrawDragon;
+        private System.Windows.Forms.TextBox textBoxDecision;
+        private System.Windows.Forms.Button buttonDecision1;
+        private System.Windows.Forms.Button buttonDecision2;
+        private System.Windows.Forms.Button buttonDecisionEscape;
     }
 }
 

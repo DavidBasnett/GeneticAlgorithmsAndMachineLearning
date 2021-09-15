@@ -48,13 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntColonyOptimisation.cs" />
     <Compile Include="DecisionTree.cs" />
     <Compile Include="Escape.cs" />
+    <Compile Include="GeneticAlgorithmCannon.cs" />
     <Compile Include="ICategorisedValue.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Swarms\KnnSwarm.cs" />
     <Compile Include="LSystem.cs" />
     <Compile Include="DecisionTreeNode.cs" />
     <Compile Include="PositionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Swarms\PSO.cs" />
+    <Compile Include="Swarms\Swarm.cs" />
+    <Compile Include="Velocity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

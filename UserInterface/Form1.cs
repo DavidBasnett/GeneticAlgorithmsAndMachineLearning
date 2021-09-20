@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Nakov.TurtleGraphics;
 using Calculations;
 using System.Windows.Forms.DataVisualization.Charting;
+using Calculations.CellularAutomata;
 
 namespace UserInterface
 {
@@ -18,6 +19,7 @@ namespace UserInterface
         private readonly Escape _escape = new Escape();
         private Swarm _swarm;
         private AntColonyOptimisation _aco;
+        private World _world;
 
         public Form1()
         {
@@ -142,7 +144,7 @@ namespace UserInterface
                 _swarm.Stop();
             }
 
-            pictureBoxSwarm.Image = new Bitmap(pictureBoxSwarm.ClientSize.Width, pictureBoxSwarm.ClientSize.Height);
+            GivePictureBoxBitmap(pictureBoxSwarm);
             _swarm = new KnnSwarm(pictureBoxSwarm.Image);
             _swarm.ImageUpdated += _swarm_ImageUpdated;
             _swarm.Start();
@@ -178,7 +180,7 @@ namespace UserInterface
                 _swarm.Stop();
             }
 
-            pictureBoxSwarm.Image = new Bitmap(pictureBoxSwarm.ClientSize.Width, pictureBoxSwarm.ClientSize.Height);
+            GivePictureBoxBitmap(pictureBoxSwarm);
             _swarm = new PSO(pictureBoxSwarm.Image);
             _swarm.ImageUpdated += _swarm_ImageUpdated;
             _swarm.Start();
@@ -191,7 +193,7 @@ namespace UserInterface
                 _aco.Stop();
             }
 
-            pictureBoxACO.Image = new Bitmap(pictureBoxACO.ClientSize.Width, pictureBoxACO.ClientSize.Height);
+            GivePictureBoxBitmap(pictureBoxACO);
             _aco = new AntColonyOptimisation(pictureBoxACO.Image) { MiddleStart = checkBoxAcoStartInMiddle.Checked};
             _aco.ImageUpdated += _aco_ImageUpdated;
             _aco.Start();
@@ -216,6 +218,89 @@ namespace UserInterface
             {
                 _aco.Stop();
             }
+        }
+
+        private void buttonStartLangtonsAnt_Click(object sender, EventArgs e)
+        {
+            if (_world != null)
+            {
+                _world.Stop();
+            }
+
+            GivePictureBoxBitmap(pictureBoxCellularAutomata);
+            _world = new LangtonsAnt(100,100, false);
+            _world.Start(pictureBoxCellularAutomata.Image);
+            _world.ImageUpdated += CellularAutomata_ImageUpdated;
+        }
+
+        private void CellularAutomata_ImageUpdated(object sender, EventArgs e)
+        {
+            UpdateCellularAutomataImage();
+        }
+        private void UpdateCellularAutomataImage()
+        {
+            if (pictureBoxCellularAutomata.InvokeRequired)
+            {
+                pictureBoxACO.Invoke(new Action(() => UpdateCellularAutomataImage()));
+                return;
+            }
+            pictureBoxCellularAutomata.Image = _world.Image;
+        }
+
+        private void GivePictureBoxBitmap(PictureBox pictureBox)
+        {
+            pictureBox.Image = new Bitmap(pictureBox.ClientSize.Width, pictureBox.ClientSize.Height);
+        }
+
+        private void buttonStopCellularAutomata_Click(object sender, EventArgs e)
+        {
+            if (_world != null)
+            {
+                _world.Stop();
+            }
+        }
+
+        private void buttonGameOfLife_Click(object sender, EventArgs e)
+        {
+            if (_world != null)
+            {
+                _world.Stop();
+            }
+
+            GivePictureBoxBitmap(pictureBoxCellularAutomata);
+            _world = new GameOfLife(100,100, true);
+            _world.InitialiseWithRandomState(50,50, 800);
+            _world.Start(pictureBoxCellularAutomata.Image);
+            _world.ImageUpdated += CellularAutomata_ImageUpdated;
+        }
+
+        private void buttonGACAOneMax_Click(object sender, EventArgs e)
+        {
+            RunGACA(new Calculations.GACA.StaticRule());
+        }
+
+        private void RunGACA(Calculations.GACA.Rule rule)
+        {
+            var optimiser = new Calculations.GACA.Algorithm();
+            var result = optimiser.Optimise(rule,
+                numberOfWorlds : 100,
+                mutationRate : 0.10,
+                epochs : 40,
+                updates : 10,
+                middle : false,
+                target : true);
+            GivePictureBoxBitmap(pictureBoxGACA);
+            result.Draw(pictureBoxGACA.Image);
+        }
+
+        private void buttonECARule_Click(object sender, EventArgs e)
+        {
+            RunGACA(new Calculations.GACA.ECARule((byte)numericUpDownECARuleNumber.Value));
+        }
+
+        private void buttonDeamRule_Click(object sender, EventArgs e)
+        {
+            RunGACA(new Calculations.GACA.DreamRule());
         }
     }
 }

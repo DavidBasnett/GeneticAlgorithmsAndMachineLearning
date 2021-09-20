@@ -64,10 +64,21 @@ namespace UserInterface
             this.pictureBoxSwarm = new System.Windows.Forms.PictureBox();
             this.buttonStartKnnSwarm = new System.Windows.Forms.Button();
             this.tabPageAnts = new System.Windows.Forms.TabPage();
+            this.checkBoxAcoStartInMiddle = new System.Windows.Forms.CheckBox();
+            this.buttonStopACO = new System.Windows.Forms.Button();
             this.pictureBoxACO = new System.Windows.Forms.PictureBox();
             this.buttonStartACO = new System.Windows.Forms.Button();
-            this.buttonStopACO = new System.Windows.Forms.Button();
-            this.checkBoxAcoStartInMiddle = new System.Windows.Forms.CheckBox();
+            this.tabPageCellularAutomata = new System.Windows.Forms.TabPage();
+            this.buttonGameOfLife = new System.Windows.Forms.Button();
+            this.buttonStopCellularAutomata = new System.Windows.Forms.Button();
+            this.pictureBoxCellularAutomata = new System.Windows.Forms.PictureBox();
+            this.buttonStartLangtonsAnt = new System.Windows.Forms.Button();
+            this.tabPageGACA = new System.Windows.Forms.TabPage();
+            this.pictureBoxGACA = new System.Windows.Forms.PictureBox();
+            this.buttonGACAOneMax = new System.Windows.Forms.Button();
+            this.buttonECARule = new System.Windows.Forms.Button();
+            this.numericUpDownECARuleNumber = new System.Windows.Forms.NumericUpDown();
+            this.buttonDeamRule = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageEscape.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEscape)).BeginInit();
@@ -84,6 +95,11 @@ namespace UserInterface
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSwarm)).BeginInit();
             this.tabPageAnts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxACO)).BeginInit();
+            this.tabPageCellularAutomata.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCellularAutomata)).BeginInit();
+            this.tabPageGACA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGACA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownECARuleNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -93,6 +109,8 @@ namespace UserInterface
             this.tabControl1.Controls.Add(this.tabPageCannon);
             this.tabControl1.Controls.Add(this.tabPageSwarm);
             this.tabControl1.Controls.Add(this.tabPageAnts);
+            this.tabControl1.Controls.Add(this.tabPageCellularAutomata);
+            this.tabControl1.Controls.Add(this.tabPageGACA);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -445,6 +463,27 @@ namespace UserInterface
             this.tabPageAnts.Text = "Ants";
             this.tabPageAnts.UseVisualStyleBackColor = true;
             // 
+            // checkBoxAcoStartInMiddle
+            // 
+            this.checkBoxAcoStartInMiddle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxAcoStartInMiddle.AutoSize = true;
+            this.checkBoxAcoStartInMiddle.Location = new System.Drawing.Point(690, 10);
+            this.checkBoxAcoStartInMiddle.Name = "checkBoxAcoStartInMiddle";
+            this.checkBoxAcoStartInMiddle.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxAcoStartInMiddle.TabIndex = 5;
+            this.checkBoxAcoStartInMiddle.Text = "Start In Middle";
+            this.checkBoxAcoStartInMiddle.UseVisualStyleBackColor = true;
+            // 
+            // buttonStopACO
+            // 
+            this.buttonStopACO.Location = new System.Drawing.Point(88, 10);
+            this.buttonStopACO.Name = "buttonStopACO";
+            this.buttonStopACO.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopACO.TabIndex = 4;
+            this.buttonStopACO.Text = "Stop";
+            this.buttonStopACO.UseVisualStyleBackColor = true;
+            this.buttonStopACO.Click += new System.EventHandler(this.buttonStopACO_Click);
+            // 
             // pictureBoxACO
             // 
             this.pictureBoxACO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -466,26 +505,129 @@ namespace UserInterface
             this.buttonStartACO.UseVisualStyleBackColor = true;
             this.buttonStartACO.Click += new System.EventHandler(this.buttonStartACO_Click);
             // 
-            // buttonStopACO
+            // tabPageCellularAutomata
             // 
-            this.buttonStopACO.Location = new System.Drawing.Point(88, 10);
-            this.buttonStopACO.Name = "buttonStopACO";
-            this.buttonStopACO.Size = new System.Drawing.Size(75, 23);
-            this.buttonStopACO.TabIndex = 4;
-            this.buttonStopACO.Text = "Stop";
-            this.buttonStopACO.UseVisualStyleBackColor = true;
-            this.buttonStopACO.Click += new System.EventHandler(this.buttonStopACO_Click);
+            this.tabPageCellularAutomata.Controls.Add(this.buttonGameOfLife);
+            this.tabPageCellularAutomata.Controls.Add(this.buttonStopCellularAutomata);
+            this.tabPageCellularAutomata.Controls.Add(this.pictureBoxCellularAutomata);
+            this.tabPageCellularAutomata.Controls.Add(this.buttonStartLangtonsAnt);
+            this.tabPageCellularAutomata.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCellularAutomata.Name = "tabPageCellularAutomata";
+            this.tabPageCellularAutomata.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCellularAutomata.Size = new System.Drawing.Size(792, 424);
+            this.tabPageCellularAutomata.TabIndex = 5;
+            this.tabPageCellularAutomata.Text = "Cellular Automata";
+            this.tabPageCellularAutomata.UseVisualStyleBackColor = true;
             // 
-            // checkBoxAcoStartInMiddle
+            // buttonGameOfLife
             // 
-            this.checkBoxAcoStartInMiddle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxAcoStartInMiddle.AutoSize = true;
-            this.checkBoxAcoStartInMiddle.Location = new System.Drawing.Point(690, 10);
-            this.checkBoxAcoStartInMiddle.Name = "checkBoxAcoStartInMiddle";
-            this.checkBoxAcoStartInMiddle.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxAcoStartInMiddle.TabIndex = 5;
-            this.checkBoxAcoStartInMiddle.Text = "Start In Middle";
-            this.checkBoxAcoStartInMiddle.UseVisualStyleBackColor = true;
+            this.buttonGameOfLife.Location = new System.Drawing.Point(107, 10);
+            this.buttonGameOfLife.Name = "buttonGameOfLife";
+            this.buttonGameOfLife.Size = new System.Drawing.Size(94, 23);
+            this.buttonGameOfLife.TabIndex = 7;
+            this.buttonGameOfLife.Text = "Game Of Life";
+            this.buttonGameOfLife.UseVisualStyleBackColor = true;
+            this.buttonGameOfLife.Click += new System.EventHandler(this.buttonGameOfLife_Click);
+            // 
+            // buttonStopCellularAutomata
+            // 
+            this.buttonStopCellularAutomata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStopCellularAutomata.Location = new System.Drawing.Point(709, 10);
+            this.buttonStopCellularAutomata.Name = "buttonStopCellularAutomata";
+            this.buttonStopCellularAutomata.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopCellularAutomata.TabIndex = 6;
+            this.buttonStopCellularAutomata.Text = "Stop";
+            this.buttonStopCellularAutomata.UseVisualStyleBackColor = true;
+            this.buttonStopCellularAutomata.Click += new System.EventHandler(this.buttonStopCellularAutomata_Click);
+            // 
+            // pictureBoxCellularAutomata
+            // 
+            this.pictureBoxCellularAutomata.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCellularAutomata.Location = new System.Drawing.Point(7, 39);
+            this.pictureBoxCellularAutomata.Name = "pictureBoxCellularAutomata";
+            this.pictureBoxCellularAutomata.Size = new System.Drawing.Size(778, 376);
+            this.pictureBoxCellularAutomata.TabIndex = 5;
+            this.pictureBoxCellularAutomata.TabStop = false;
+            // 
+            // buttonStartLangtonsAnt
+            // 
+            this.buttonStartLangtonsAnt.Location = new System.Drawing.Point(7, 10);
+            this.buttonStartLangtonsAnt.Name = "buttonStartLangtonsAnt";
+            this.buttonStartLangtonsAnt.Size = new System.Drawing.Size(94, 23);
+            this.buttonStartLangtonsAnt.TabIndex = 4;
+            this.buttonStartLangtonsAnt.Text = "Langtons Ant";
+            this.buttonStartLangtonsAnt.UseVisualStyleBackColor = true;
+            this.buttonStartLangtonsAnt.Click += new System.EventHandler(this.buttonStartLangtonsAnt_Click);
+            // 
+            // tabPageGACA
+            // 
+            this.tabPageGACA.Controls.Add(this.buttonDeamRule);
+            this.tabPageGACA.Controls.Add(this.numericUpDownECARuleNumber);
+            this.tabPageGACA.Controls.Add(this.buttonECARule);
+            this.tabPageGACA.Controls.Add(this.pictureBoxGACA);
+            this.tabPageGACA.Controls.Add(this.buttonGACAOneMax);
+            this.tabPageGACA.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGACA.Name = "tabPageGACA";
+            this.tabPageGACA.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGACA.Size = new System.Drawing.Size(792, 424);
+            this.tabPageGACA.TabIndex = 6;
+            this.tabPageGACA.Text = "GACA";
+            this.tabPageGACA.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxGACA
+            // 
+            this.pictureBoxGACA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGACA.Location = new System.Drawing.Point(7, 39);
+            this.pictureBoxGACA.Name = "pictureBoxGACA";
+            this.pictureBoxGACA.Size = new System.Drawing.Size(778, 376);
+            this.pictureBoxGACA.TabIndex = 7;
+            this.pictureBoxGACA.TabStop = false;
+            // 
+            // buttonGACAOneMax
+            // 
+            this.buttonGACAOneMax.Location = new System.Drawing.Point(7, 10);
+            this.buttonGACAOneMax.Name = "buttonGACAOneMax";
+            this.buttonGACAOneMax.Size = new System.Drawing.Size(67, 23);
+            this.buttonGACAOneMax.TabIndex = 6;
+            this.buttonGACAOneMax.Text = "One Max";
+            this.buttonGACAOneMax.UseVisualStyleBackColor = true;
+            this.buttonGACAOneMax.Click += new System.EventHandler(this.buttonGACAOneMax_Click);
+            // 
+            // buttonECARule
+            // 
+            this.buttonECARule.Location = new System.Drawing.Point(80, 10);
+            this.buttonECARule.Name = "buttonECARule";
+            this.buttonECARule.Size = new System.Drawing.Size(67, 23);
+            this.buttonECARule.TabIndex = 8;
+            this.buttonECARule.Text = "ECARule";
+            this.buttonECARule.UseVisualStyleBackColor = true;
+            this.buttonECARule.Click += new System.EventHandler(this.buttonECARule_Click);
+            // 
+            // numericUpDownECARuleNumber
+            // 
+            this.numericUpDownECARuleNumber.Location = new System.Drawing.Point(153, 10);
+            this.numericUpDownECARuleNumber.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownECARuleNumber.Name = "numericUpDownECARuleNumber";
+            this.numericUpDownECARuleNumber.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownECARuleNumber.TabIndex = 9;
+            // 
+            // buttonDeamRule
+            // 
+            this.buttonDeamRule.Location = new System.Drawing.Point(279, 10);
+            this.buttonDeamRule.Name = "buttonDeamRule";
+            this.buttonDeamRule.Size = new System.Drawing.Size(67, 23);
+            this.buttonDeamRule.TabIndex = 10;
+            this.buttonDeamRule.Text = "Dream";
+            this.buttonDeamRule.UseVisualStyleBackColor = true;
+            this.buttonDeamRule.Click += new System.EventHandler(this.buttonDeamRule_Click);
             // 
             // Form1
             // 
@@ -514,6 +656,11 @@ namespace UserInterface
             this.tabPageAnts.ResumeLayout(false);
             this.tabPageAnts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxACO)).EndInit();
+            this.tabPageCellularAutomata.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCellularAutomata)).EndInit();
+            this.tabPageGACA.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGACA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownECARuleNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -553,6 +700,17 @@ namespace UserInterface
         private System.Windows.Forms.PictureBox pictureBoxACO;
         private System.Windows.Forms.Button buttonStartACO;
         private System.Windows.Forms.CheckBox checkBoxAcoStartInMiddle;
+        private System.Windows.Forms.TabPage tabPageCellularAutomata;
+        private System.Windows.Forms.PictureBox pictureBoxCellularAutomata;
+        private System.Windows.Forms.Button buttonStartLangtonsAnt;
+        private System.Windows.Forms.Button buttonStopCellularAutomata;
+        private System.Windows.Forms.Button buttonGameOfLife;
+        private System.Windows.Forms.TabPage tabPageGACA;
+        private System.Windows.Forms.PictureBox pictureBoxGACA;
+        private System.Windows.Forms.Button buttonGACAOneMax;
+        private System.Windows.Forms.NumericUpDown numericUpDownECARuleNumber;
+        private System.Windows.Forms.Button buttonECARule;
+        private System.Windows.Forms.Button buttonDeamRule;
     }
 }
 

@@ -49,8 +49,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AntColonyOptimisation.cs" />
+    <Compile Include="CellularAutomata\GameOfLife.cs" />
+    <Compile Include="CellularAutomata\LangtonsAnt.cs" />
+    <Compile Include="CellularAutomata\World.cs" />
     <Compile Include="DecisionTree.cs" />
     <Compile Include="Escape.cs" />
+    <Compile Include="GACA\Algorithm.cs" />
+    <Compile Include="GACA\Crossover.cs" />
+    <Compile Include="GACA\DreamRule.cs" />
+    <Compile Include="GACA\ECARule.cs" />
+    <Compile Include="GACA\Mutation.cs" />
+    <Compile Include="GACA\Row.cs" />
+    <Compile Include="GACA\RowGenerator.cs" />
+    <Compile Include="GACA\Rule.cs" />
+    <Compile Include="GACA\StaticRule.cs" />
+    <Compile Include="GACA\World.cs" />
     <Compile Include="GeneticAlgorithmCannon.cs" />
     <Compile Include="ICategorisedValue.cs" />
     <Compile Include="Location.cs" />
